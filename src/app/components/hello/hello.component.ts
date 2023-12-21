@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { SpotifyService } from 'src/app/services/spotify-service.service';
 
 @Component({
@@ -9,7 +10,11 @@ import { SpotifyService } from 'src/app/services/spotify-service.service';
 export class HelloComponent implements OnInit {
   randomTrack;
   link;
-  constructor(private spotifyService: SpotifyService) {}
+  trackID;
+  constructor(
+    private spotifyService: SpotifyService,
+    private sanitizer: DomSanitizer
+  ) {}
 
   ngOnInit(): void {}
   getAccessToken() {
@@ -26,8 +31,10 @@ export class HelloComponent implements OnInit {
     this.spotifyService.getTracks().subscribe((response: { tracks }) => {
       let allTracks = response.tracks.items.length;
       const randomNumber = Math.floor(Math.random() * allTracks);
+      console.log(response);
       this.link =
         response.tracks.items[randomNumber].track.external_urls.spotify;
+      this.trackID = response.tracks.items[randomNumber].track.id;
     });
   }
 }

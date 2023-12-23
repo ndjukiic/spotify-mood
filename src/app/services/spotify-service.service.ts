@@ -27,15 +27,16 @@ export class SpotifyService {
         },
       })
       .pipe(
-        tap((response) => {
-          console.log(response);
-        })
+        tap(
+          (response) => {
+            console.log(response);
+          }
+        )
       );
   }
 
   getAccessToken() {
-    let body =
-      `grant_type=client_credentials&client_id=${environment.client_id}&client_secret=${environment.client_secret}`;
+    let body = `grant_type=client_credentials&client_id=${environment.client_id}&client_secret=${environment.client_secret}`;
 
     return this.httpClient
       .post('https://accounts.spotify.com/api/token', body, {

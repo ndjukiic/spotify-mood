@@ -1039,8 +1039,12 @@ h4 {
 .right-\[10px\] {
   right: 10px;
 }
-.top-1\/2 {
+.top-1 {
   top: 50%;
+}
+
+.left-1 {
+  left: 50%;
 }
 .bottom-\[5px\] {
   bottom: 5px;
@@ -2760,4 +2764,8 @@ h4 {
 .btn-detaljnije:focus {
   border: none;
   outline: none;
+}
+
+.alt-m {
+  margin: -50px 0 0 -50px;
 }
